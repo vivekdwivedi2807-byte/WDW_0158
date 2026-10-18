@@ -10,6 +10,7 @@ Welcome to my repository! This project serves as a structured collection of my w
     *   `HTML video player.html` - Video element implementation.
     *   `HTML audio and video player.html` - Combined multimedia interface.
     *   `iframe video and map display.html` -iframe implementation.
+    *   `list of major web` -learning use of description list.
 *   **Webpage Layouts & Projects**: ('practiced from FreecodeCamp')
     *   `Traveling_Page.html` - A travel-themed landing page.
     *   `XYZ BookStore.html` - A e-commerce/bookstore layout prototype.
