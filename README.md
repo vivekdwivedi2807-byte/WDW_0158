@@ -16,6 +16,7 @@ Welcome to my repository! This project serves as a structured collection of my w
     *   `XYZ BookStore.html` - A e-commerce/bookstore layout prototype.
     *   `catphoto.html` - A basic structured practice page focusing on images and text content.
     *   `redheart.html` - An HTML component experiment.
+    *   `Quincy's Tips for getting developer job` -learning the use of cite,paragraph,blockquote etc.
 
 ## 🚀 Key Learning Objectives
 *   Mastering foundational **HTML5 semantic elements**.
@@ -28,4 +29,4 @@ Welcome to my repository! This project serves as a structured collection of my w
    git clone https://github.com
    ```
 2. Open any `.html` file directly in your preferred web browser (Chrome, Edge, Firefox) to view the rendered page.
-3.
+
