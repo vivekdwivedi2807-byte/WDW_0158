@@ -16,7 +16,8 @@ Welcome to my repository! This project serves as a structured collection of my w
     *   `XYZ BookStore.html` - A e-commerce/bookstore layout prototype.
     *   `catphoto.html` - A basic structured practice page focusing on images and text content.
     *   `redheart.html` - An HTML component experiment.
-    *   `Quincy's Tips for getting developer job` -learning the use of cite,paragraph,blockquote etc.
+    *   `Quincy's Tips for getting developer job.html` -learning the use of cite,paragraph,blockquote etc.
+    *   `Cat blog page.html` -An HTML project for learning multiple different things.
 
 ## 🚀 Key Learning Objectives
 *   Mastering foundational **HTML5 semantic elements**.
