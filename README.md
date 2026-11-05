@@ -18,6 +18,7 @@ Welcome to my repository! This project serves as a structured collection of my w
     *   `redheart.html` - An HTML component experiment.
     *   `Quincy's Tips for getting developer job.html` -learning the use of cite,paragraph,blockquote etc.
     *   `Cat blog page.html` -An HTML project for learning multiple different things.
+    *   `hotel feedback form.html` - An html project for hotels to reveiw the customer services as a feedback.
 
 ## 🚀 Key Learning Objectives
 *   Mastering foundational **HTML5 semantic elements**.
