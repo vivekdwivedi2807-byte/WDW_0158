@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Survey Form</title>
+  </head>
+  <body>
+    <h1 id="title">freeCodeCamp Survey Form</h1>
+      <p id="description">Thank you for taking the time to help us improve the platform</p>
+
+      <form id="survey-form">
+        <label id="name-label">Name</label>
+       <input id="name" type="text" placeholder="Enter your name" required>
+        <br>
+       <label id="email-label">Email</label>
+       <input id="email" type="email" placeholder="Enter your email" required>
+       <br>
+       <label id="number-label">Age(Optional)</label>
+       <input id="number" type="number" placeholder="Age" min="18" max="100">
+       <br>
+       <p>Which option best describes your current role?</p>
+       <select id="dropdown">
+       <option value=" ">Select current role </option>
+       <option value="Student">Student</option>
+       <option value="full-Time-job">Full Time Job</option>
+       <option value="full-time-learner">Full Time Learner</option>
+       <option value="prefer-not-to-say">Prefer not to say</option>
+       <option value="other">Other</option>
+       </select>
+
+       <p>Would you recommend freeCodeCamp to a friend? </p>
+       <input type="radio" name="recommend" id="Definitely" value="Definitely" required>Definitely
+       <input type="radio" name="recommend" value="Maybe" id="Maybe" required>Maybe
+       <input type="radio" name="recommend" id="Not-Sure" value="Not-Sure" required>Not Sure
+
+       <p>What is your favorite feature of freeCodeCamp? </p>
+       <select id="dropdown">
+        <option value="">Select an option</option>
+        <option value="Challenges">Challenges</option>
+        <option value="Projects">Projects</option>
+        <option value="Community">Community</option>
+        <option value="Open-Source">Open Source</option>
+
+       </select>
+       <p>What would you like to see improved?(Check all that apply)</p>
+       <input type="checkbox" id="" name="" value="front-end-projects">
+       <label for="">Front-end Projects</label>
+       <input type="checkbox" id="" name="" value="back-end-projects">
+       <label for="">Back-end Projects</label>
+       <input type="checkbox" id="" name="" value="data-visualisation">
+       <label for="">Data Visualisation</label>
+       <input type="checkbox" id="" name="" value="challenges">
+       <label for="">Challenges</label>
+       <input type="checkbox" id="" name="" value="city-meetups">
+       <label for="">City Meetups</label>
+       <input type="checkbox" id="" name="" value="wiki">
+       <label for="">Wiki</label>
+       <input type="checkbox" id="" name="" value="forum">
+       <label for="">Forum</label><br>
+
+       <p>Any comments or suggestion?</p>
+       <textarea placeholder="Enter your comments here...."></textarea>
+       <br>
+
+       <button id="submit" type="submit">Submit</button>
+      
+
+
+       
+      </form>
+  </body>
+</html>
