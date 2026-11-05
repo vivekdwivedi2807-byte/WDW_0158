@@ -19,6 +19,8 @@ Welcome to my repository! This project serves as a structured collection of my w
     *   `Quincy's Tips for getting developer job.html` -learning the use of cite,paragraph,blockquote etc.
     *   `Cat blog page.html` -An HTML project for learning multiple different things.
     *   `hotel feedback form.html` - An html project for hotels to reveiw the customer services as a feedback.
+    *   `Calculas final exam table.html` - An Html project to learn about table and its elements.
+    *   `A book Catalog.html` - An  html project to learn about tr,th,td,etc.
 
 ## 🚀 Key Learning Objectives
 *   Mastering foundational **HTML5 semantic elements**.
