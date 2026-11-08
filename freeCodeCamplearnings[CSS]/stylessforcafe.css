@@ -17,3 +17,16 @@ h1, h2, p {
 .item p {
   display: inline-block;
 }
+.item p {
+  display: inline-block;
+}
+
+.flavor, .dessert {
+  text-align: left;
+  width: 75%;
+}
+
+.price {
+  text-align: right;
+  width: 25%;
+}
