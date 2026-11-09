@@ -21,6 +21,10 @@ Welcome to my repository! This project serves as a structured collection of my w
     *   `hotel feedback form.html` - An html project for hotels to reveiw the customer services as a feedback.
     *   `Calculas final exam table.html` - An Html project to learn about table and its elements.
     *   `A book Catalog.html` - An  html project to learn about tr,th,td,etc.
+    *   `Accessible audio comtroller.html` - An html project to crontrol and access audio.
+    *   `Tech Conferene 2025 Schedule.html`- An html project which helps to learn about forms and table.
+*   **Projects Using CSS**: ('Practiced from freeCodeCamp')
+    *   `Cafe Menu.html & stylessforcafe.css`- A project using CSS and HTML to learn basics of css.   
 
 ## 🚀 Key Learning Objectives
 *   Mastering foundational **HTML5 semantic elements**.
