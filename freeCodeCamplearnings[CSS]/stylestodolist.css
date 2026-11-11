@@ -1,3 +1,46 @@
+body{
+  background-color: rgb(233, 222, 222);
+  font-family: Arial, sans-serif;
+  margin: 30px;
+  padding: 20px;
+  text-align: center;
+  list-style-position: inside;
+
+}
+.todo-item {
+  margin-bottom: 20px;
+  text-align: left;
+  font-size: 18px;
+
+}
+ .vivek {
+ width: 100%;
+  background-color: rgb(208, 125, 125);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  max-width: 540px;
+  box-sizing: border-box;
+  
+}
+.nishii {
+  width: 100%;
+  background-color: rgb(208, 125, 125);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  max-width: 540px;
+  box-sizing: border-box;
+  
+}
+.todo-list {
+  width: 80%;
+  background-color: burlywood;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  max-width: 500px;
+}
 a{ text-decoration: none}
 a:link{
   color: blue
@@ -9,7 +52,7 @@ a:active{
   color: pink
 }
 a:visited{
-  color: yellow
+  color: rgb(157, 109, 157)
 }
 a:focus{
   outline: 2px
