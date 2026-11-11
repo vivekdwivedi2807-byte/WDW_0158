@@ -15,32 +15,34 @@ body{
 }
  .vivek {
  width: 100%;
-  background-color: rgb(208, 125, 125);
-  margin-left: auto;
-  margin-right: auto;
+  background-color: #f4f4f6;
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
   padding: 20px;
-  max-width: 540px;
-  box-sizing: border-box;
+  max-width: 600px;
+  margin: 20px auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+ 
   
 }
 .nishii {
   width: 100%;
-  background-color: rgb(208, 125, 125);
+  background-color: rgb(189, 230, 189);
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
   max-width: 540px;
   box-sizing: border-box;
+  border-radius: 8px;
   
 }
-.todo-list {
-  width: 80%;
-  background-color: burlywood;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 20px;
-  max-width: 500px;
+ul.todo-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
+ 
+
 a{ text-decoration: none}
 a:link{
   color: blue
