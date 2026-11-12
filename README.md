@@ -25,11 +25,15 @@ Welcome to my repository! This project serves as a structured collection of my w
     *   `Tech Conferene 2025 Schedule.html`- An html project which helps to learn about forms and table.
 *   **Projects Using CSS**: ('Practiced from freeCodeCamp')
     *   `Cafe Menu.html & stylessforcafe.css`- A project using CSS and HTML to learn basics of css.   
+    *   `Portfolio.HTML & styleportfolio.css`- A project using CSS and HTML to make my portfolio webpage.
+    *   `Todolist.HTML & stylestodolist.css` - A project using CSS and HTML to know about what i need to do.
+    *   `Blog Post.HTML & stylesblogpost.css`- A project using CSS amd HTML for Blog Post.
 
 ## 🚀 Key Learning Objectives
 *   Mastering foundational **HTML5 semantic elements**.
 *   Integrating native **audio and video players** without external plugins.
 *   Building functional structural components like forms, text formatting, and image handling.
+*   Using CSS to design , style , make the projects attractive .
 
 ## 🛠️ How to Run these Files Locally
 1. Clone this repository to your machine:
