@@ -8,7 +8,10 @@
 }
 body{
   background-color: #FFF1E6;
-  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
 }
 .post-content{
   padding: 0px
@@ -27,7 +30,8 @@ body{
 }
 .post-img{
   border-bottom: 1px solid #ccc;
-  border-top-radius: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 
   }
   .post-title{
