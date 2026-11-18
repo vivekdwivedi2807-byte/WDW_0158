@@ -187,7 +187,40 @@
 
     <p class="demo-note"> Demo only — messages are not private or encrypted.</p>
   </main>
+ <script>
+    const chatForm = document.getElementById("chatForm");
+    const messageInput = document.getElementById("messageInput");
+    const messages = document.getElementById("messages");
 
+    chatForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const text = messageInput.value.trim();
+
+      if (text === "") {
+        return;
+      }
+
+      const message = document.createElement("div");
+      message.className = "message sent";
+
+      const messageText = document.createElement("p");
+      messageText.textContent = text;
+
+      const time = document.createElement("small");
+      time.textContent = new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit"
+      });
+
+      message.append(messageText, time);
+      messages.appendChild(message);
+
+      messageInput.value = "";
+      messages.scrollTop = messages.scrollHeight;
+      messageInput.focus();
+    });
+  </script>
  
 </body>
 </html>
