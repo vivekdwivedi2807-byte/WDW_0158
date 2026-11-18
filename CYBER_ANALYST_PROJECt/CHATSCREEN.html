@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Private Chat Demo</title>
+
+  
+    
+</head>
+
+<body>
+  <main class="chat">
+    <header class="chat-header">
+      <div class="avatar">M</div>
+      <div>
+        <h1>Maya</h1>
+        <p class="status">Online</p>
+      </div>
+    </header>
+
+    <section class="messages" id="messages" aria-label="Chat messages">
+      <div class="message received">
+        <p>Hey! Did you finish the design?</p>
+        <small>10:42</small>
+      </div>
+
+      <div class="message sent">
+        <p>Almost done — sending it soon.</p>
+        <small>10:43</small>
+      </div>
+    </section>
+
+    <form class="chat-form" id="chatForm">
+      <input
+        id="messageInput"
+        type="text"
+        placeholder="Write a message..."
+        autocomplete="off"
+        aria-label="Your message"
+      >
+      <button type="submit">Send</button>
+    </form>
+
+    <p class="demo-note">Demo only — messages are not private or encrypted.</p>
+  </main>
+
+ 
+</body>
+</html>
