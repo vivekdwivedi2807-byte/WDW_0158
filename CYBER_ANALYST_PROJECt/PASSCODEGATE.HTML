@@ -175,6 +175,23 @@
     <p class="demo-note">Demo passcode: 1234</p>
   </main>
 
-  
+  <script>
+    const unlockForm = document.getElementById("unlockForm");
+    const passcodeInput = document.getElementById("passcode");
+    const message = document.getElementById("message");
+     
+    unlockForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      if (passcodeInput.value === "1234") {
+        window.location.href = "CHATSCREEN.html";
+      } else {
+        message.textContent = "Incorrect passcode. Try again.";
+        message.style.color = "#c0392b";
+        passcodeInput.value = "";
+        passcodeInput.focus();
+      }
+    });
+  </script>
 </body>
 </html>
