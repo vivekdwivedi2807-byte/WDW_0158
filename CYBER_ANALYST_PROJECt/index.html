@@ -3,220 +3,278 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#263e72">
   <title>Private Chat Demo</title>
-
-   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      background: #eef2f8;
-      font-family: Arial, sans-serif;
-      color: #1d2939;
-    }
-
-    .chat {
-      width: min(420px, 100%);
-      height: min(680px, 100vh);
-      display: flex;
-      flex-direction: column;
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 12px 35px #172b4d20;
-    }
-
-    .chat-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 18px;
-      background: #263e72;
-      color: white;
-    }
-
-    .avatar {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: #dce8ff;
-      color: #263e72;
-      font-weight: bold;
-    }
-
-    .chat-header h1 {
-      margin: 0 0 4px;
-      font-size: 17px;
-    }
-
-    .status {
-      margin: 0;
-      color: #d5e2ff;
-      font-size: 13px;
-    }
-
-    .messages {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      padding: 20px 14px;
-      overflow-y: auto;
-      background: #f8f9fc;
-    }
-
-    .message {
-      max-width: 80%;
-      padding: 11px 14px;
-      border-radius: 16px;
-      line-height: 1.4;
-      overflow-wrap: anywhere;
-    }
-
-    .message p {
-      margin: 0;
-    }
-
-    .message small {
-      display: block;
-      margin-top: 5px;
-      color: #667085;
-      font-size: 11px;
-      text-align: right;
-    }
-
-    .received {
-      align-self: flex-start;
-      background: #e9edf4;
-      border-bottom-left-radius: 4px;
-    }
-
-    .sent {
-      align-self: flex-end;
-      background: #dce8ff;
-      border-bottom-right-radius: 4px;
-    }
-
-    .chat-form {
-      display: flex;
-      gap: 10px;
-      padding: 14px;
-      border-top: 1px solid #e5e7eb;
-      background: white;
-    }
-
-    .chat-form input {
-      flex: 1;
-      min-width: 0;
-      padding: 12px 14px;
-      border: 1px solid #d0d5dd;
-      border-radius: 24px;
-      font-size: 15px;
-    }
-
-    .chat-form input:focus {
-      outline: 2px solid #9bb8ff;
-      border-color: #4569bd;
-    }
-
-    .chat-form button {
-      padding: 0 18px;
-      border: 0;
-      border-radius: 24px;
-      background: #4569bd;
-      color: white;
-      font-size: 15px;
-      cursor: pointer;
-    }
-
-    .chat-form button:hover {
-      background: #34549d;
-    }
-
-    
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 16px; background: #eef2f8; color: #1d2939; font-family: Arial, sans-serif; }
+    .chat { width: min(520px, 100%); height: min(760px, calc(100vh - 32px)); min-height: 570px; display: flex; flex-direction: column; overflow: hidden; background: #fff; border-radius: 18px; box-shadow: 0 12px 35px #172b4d20; }
+    .chat-header { display: flex; align-items: center; gap: 12px; padding: 17px 18px; background: #263e72; color: white; }
+    .avatar { width: 42px; height: 42px; flex: none; display: grid; place-items: center; border-radius: 50%; background: #dce8ff; color: #263e72; font-weight: bold; }
+    .title { flex: 1; min-width: 0; }
+    .title h1 { margin: 0 0 4px; font-size: 17px; }
+    .status { margin: 0; color: #d5e2ff; font-size: 12px; }
+    .room-setup { padding: 18px; border-bottom: 1px solid #e5e7eb; }
+    .room-setup h2 { margin: 0 0 6px; font-size: 17px; }
+    .help { margin: 0 0 14px; color: #667085; font-size: 13px; line-height: 1.45; }
+    label { display: block; margin: 12px 0 6px; font-size: 13px; font-weight: bold; }
+    input { min-width: 0; padding: 11px 13px; border: 1px solid #d0d5dd; border-radius: 10px; font: inherit; }
+    input:focus { outline: 2px solid #9bb8ff; border-color: #4569bd; }
+    .name-input, .room-input { width: 100%; }
+    .room-actions { display: flex; gap: 9px; margin-top: 12px; }
+    button { border: 0; border-radius: 10px; background: #4569bd; color: white; font-weight: bold; cursor: pointer; }
+    button:hover { background: #34549d; }
+    button:disabled { opacity: .55; cursor: wait; }
+    .room-actions button { min-height: 42px; flex: 1; padding: 0 12px; }
+    .divider { display: flex; align-items: center; gap: 10px; margin: 13px 0; color: #98a2b3; font-size: 12px; }
+    .divider::before, .divider::after { content: ""; height: 1px; flex: 1; background: #e5e7eb; }
+    .join-row { display: flex; gap: 8px; }
+    .join-row input { flex: 1; }
+    .join-row button { padding: 0 18px; }
+    .room-banner { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid #e5e7eb; background: #f9fbff; font-size: 12px; }
+    .room-banner strong { overflow: hidden; text-overflow: ellipsis; }
+    .room-banner .room-label { color: #667085; }
+    .copy-button, .leave-button { padding: 7px 9px; font-size: 11px; }
+    .leave-button { margin-left: auto; border: 1px solid #d0d5dd; background: white; color: #344054; }
+    .leave-button:hover { background: #f2f4f7; }
+    .messages { flex: 1; display: flex; flex-direction: column; gap: 10px; overflow-y: auto; padding: 17px 14px; background: #f8f9fc; }
+    .empty { max-width: 310px; margin: auto; color: #667085; text-align: center; font-size: 14px; line-height: 1.5; }
+    .message { max-width: 82%; padding: 10px 13px; border-radius: 16px; overflow-wrap: anywhere; line-height: 1.4; }
+    .message p { margin: 0; white-space: pre-wrap; }
+    .message .sender { margin-bottom: 3px; color: #667085; font-size: 11px; font-weight: bold; }
+    .message small { display: block; margin-top: 5px; color: #667085; font-size: 10px; text-align: right; }
+    .received { align-self: flex-start; border-bottom-left-radius: 4px; background: #e9edf4; }
+    .sent { align-self: flex-end; border-bottom-right-radius: 4px; background: #dce8ff; }
+    .chat-form { display: flex; gap: 9px; padding: 12px; border-top: 1px solid #e5e7eb; background: white; }
+    .chat-form input { flex: 1; }
+    .chat-form button { width: 62px; }
+    .chat-form button:disabled { background: #aeb9d0; }
+    .notice { min-height: 18px; margin: 0; padding: 0 14px 10px; color: #667085; background: white; font-size: 12px; }
+    .warning { padding: 9px 14px 12px; color: #7c5a12; background: #fff7e3; font-size: 11px; line-height: 1.4; }
+    .hidden { display: none !important; }
+    @media (max-width: 520px) { body { padding: 0; background: #fff; } .chat { width: 100%; height: 100dvh; min-height: 0; border-radius: 0; box-shadow: none; } }
   </style>
-    
 </head>
-
 <body>
   <main class="chat">
     <header class="chat-header">
-      <div class="avatar">M</div>
-      <div>
-        <h1>VIVEK</h1>
-        <p class="status">Online</p>
-      </div>
+      <div class="avatar" aria-hidden="true">V</div>
+      <div class="title"><h1>Private Chat Demo</h1><p class="status" id="connectionStatus">Starting…</p></div>
     </header>
 
-    <section class="messages" id="messages" aria-label="Chat messages">
-      <div class="message received">
-        <p>Hey! Did you finish the design?</p>
-        <small>10:42</small>
-      </div>
+    <section class="room-setup" id="roomSetup">
+      <h2>Start a chat with someone</h2>
+      <p class="help">Create a room and share its invite code with your friend, or enter a code they gave you.</p>
+      <label for="displayName">Your name</label>
+      <input class="name-input" id="displayName" maxlength="30" placeholder="For example, Alex" autocomplete="nickname">
+      <div class="room-actions"><button id="createRoomButton" type="button" disabled>Create a new chat</button></div>
+      <div class="divider">or join a chat</div>
+      <label for="roomCodeInput">Chat invite code</label>
+      <div class="join-row"><input class="room-input" id="roomCodeInput" maxlength="32" placeholder="Enter the code" autocomplete="off"><button id="joinRoomButton" type="button" disabled>Join</button></div>
+    </section>
 
-      <div class="message sent">
-        <p>Almost done — sending it soon.</p>
-        <small>10:43</small>
-      </div>
+    <section class="room-banner hidden" id="roomBanner">
+      <span class="room-label">Invite code:</span><strong id="activeRoomCode"></strong>
+      <button class="copy-button" id="copyRoomButton" type="button">Copy</button>
+      <button class="leave-button" id="leaveRoomButton" type="button">Leave</button>
+    </section>
+
+    <section class="messages" id="messages" aria-live="polite" aria-label="Chat messages">
+      <p class="empty">Connect to Firebase, then create a room or join with an invite code.</p>
     </section>
 
     <form class="chat-form" id="chatForm">
-      <input
-        id="messageInput"
-        type="text"
-        placeholder="Write a message..."
-        autocomplete="off"
-        aria-label="Your message"
-      >
-      <button type="submit">Send</button>
+      <input id="messageInput" type="text" maxlength="1000" placeholder="Write a message…" autocomplete="off" aria-label="Your message" disabled>
+      <button id="sendButton" type="submit" disabled>Send</button>
     </form>
-
-    
+    <p class="notice" id="notice" role="status"></p>
+    <div class="warning">Learning demo: messages are stored in Firebase and are not end-to-end encrypted. Anyone with the invite code can join this room.</div>
   </main>
-  
- <script>
-    const chatForm = document.getElementById("chatForm");
-    const messageInput = document.getElementById("messageInput");
-    const messages = document.getElementById("messages");
 
-    chatForm.addEventListener("submit", function (event) {
-      event.preventDefault();
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signInAnonymously } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
+    import { getDatabase, ref, push, set, serverTimestamp, query, limitToLast, onValue } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-database.js";
+    import { firebaseConfig } from "./firebase-config.js";
 
-      const text = messageInput.value.trim();
+    const $ = id => document.getElementById(id);
+    const configReady = firebaseConfig.apiKey && !firebaseConfig.apiKey.startsWith("PASTE_") && firebaseConfig.databaseURL && !firebaseConfig.databaseURL.includes("YOUR_");
+    let auth, database, currentUser, activeRoom = "", stopMessages = null;
 
-      if (text === "") {
+    const savedName = localStorage.getItem("chatDisplayName") || "";
+    $("displayName").value = savedName;
+    $("roomCodeInput").value = localStorage.getItem("chatRoomCode") || "";
+
+    function setStatus(message) { $("connectionStatus").textContent = message; }
+    function showNotice(message, isError = false) {
+      $("notice").textContent = message;
+      $("notice").style.color = isError ? "#b42318" : "#667085";
+    }
+    function cleanRoomCode(value) { return value.trim().toLowerCase(); }
+    function getName() {
+      const name = $("displayName").value.trim().slice(0, 30);
+      if (name) localStorage.setItem("chatDisplayName", name);
+      return name || "Guest";
+    }
+    function makeRoomCode() {
+      return Array.from(crypto.getRandomValues(new Uint8Array(12)), byte => byte.toString(16).padStart(2, "0")).join("");
+    }
+    function makeMessageBubble(message) {
+      const bubble = document.createElement("article");
+      bubble.className = "message " + (message.uid === currentUser.uid ? "sent" : "received");
+      if (message.uid !== currentUser.uid) {
+        const sender = document.createElement("div");
+        sender.className = "sender";
+        sender.textContent = message.name || "Guest";
+        bubble.appendChild(sender);
+      }
+      const paragraph = document.createElement("p");
+      paragraph.textContent = message.text || "";
+      const time = document.createElement("small");
+      time.textContent = message.createdAt ? new Date(message.createdAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) : "Sending…";
+      bubble.append(paragraph, time);
+      return bubble;
+    }
+    function renderMessages(data) {
+      const box = $("messages");
+      box.replaceChildren();
+      const entries = data ? Object.values(data) : [];
+      if (entries.length === 0) {
+        const empty = document.createElement("p");
+        empty.className = "empty";
+        empty.textContent = "Chat room is ready. Send a message to begin.";
+        box.appendChild(empty);
+      } else {
+        entries.forEach(message => box.appendChild(makeMessageBubble(message)));
+      }
+      box.scrollTop = box.scrollHeight;
+    }
+
+    async function enterRoom(rawCode) {
+      const code = cleanRoomCode(rawCode);
+      if (!/^[a-f0-9]{24}$/.test(code)) {
+        showNotice("Invite codes must be 24 characters. Check the code and try again.", true);
         return;
       }
+      if (!currentUser) {
+        showNotice("Connecting to Firebase. Try again in a moment.", true);
+        return;
+      }
+      try {
+        showNotice("Joining chat…");
+        await set(ref(database, `rooms/${code}/members/${currentUser.uid}`), true);
+        activeRoom = code;
+        localStorage.setItem("chatRoomCode", code);
+        $("activeRoomCode").textContent = code;
+        $("roomSetup").classList.add("hidden");
+        $("roomBanner").classList.remove("hidden");
+        $("messageInput").disabled = false;
+        $("sendButton").disabled = false;
+        if (stopMessages) stopMessages();
+        const messagesQuery = query(ref(database, `rooms/${code}/messages`), limitToLast(100));
+        stopMessages = onValue(messagesQuery, snapshot => {
+          renderMessages(snapshot.val());
+          setStatus("Connected - messages update live");
+          showNotice("");
+        }, error => showNotice("Could not read this room. Check Firebase security rules.", true));
+      } catch (error) {
+        showNotice("Could not join. Check the Firebase setup and security rules.", true);
+        console.error(error);
+      }
+    }
 
-      const message = document.createElement("div");
-      message.className = "message sent";
-
-      const messageText = document.createElement("p");
-      messageText.textContent = text;
-
-      const time = document.createElement("small");
-      time.textContent = new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit"
-      });
-
-      message.append(messageText, time);
-      messages.appendChild(message);
-
-      messageInput.value = "";
-      messages.scrollTop = messages.scrollHeight;
-      messageInput.focus();
+    $("createRoomButton").addEventListener("click", async () => {
+      const code = makeRoomCode();
+      await enterRoom(code);
+    });
+    $("joinRoomButton").addEventListener("click", () => enterRoom($("roomCodeInput").value));
+    $("roomCodeInput").addEventListener("keydown", event => {
+      if (event.key === "Enter") { event.preventDefault(); enterRoom($("roomCodeInput").value); }
+    });
+    $("copyRoomButton").addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(activeRoom);
+        showNotice("Invite code copied. Send it to your friend.");
+      } catch {
+        window.prompt("Copy this invite code and share it with your friend:", activeRoom);
+      }
+    });
+    $("leaveRoomButton").addEventListener("click", () => {
+      if (stopMessages) stopMessages();
+      stopMessages = null;
+      activeRoom = "";
+      localStorage.removeItem("chatRoomCode");
+      $("roomBanner").classList.add("hidden");
+      $("roomSetup").classList.remove("hidden");
+      $("messageInput").disabled = true;
+      $("sendButton").disabled = true;
+      $("messages").replaceChildren();
+      const empty = document.createElement("p");
+      empty.className = "empty";
+      empty.textContent = "Create a room or join one with an invite code.";
+      $("messages").appendChild(empty);
+      showNotice("");
+      setStatus("Connected - choose a chat");
     });
 
-    
+    $("chatForm").addEventListener("submit", async event => {
+      event.preventDefault();
+      const text = $("messageInput").value.trim();
+      if (!text || !activeRoom || !currentUser) return;
+      $("sendButton").disabled = true;
+      try {
+        const messageRef = push(ref(database, `rooms/${activeRoom}/messages`));
+        await set(messageRef, {
+          uid: currentUser.uid,
+          name: getName(),
+          text,
+          createdAt: serverTimestamp()
+        });
+        $("messageInput").value = "";
+        $("messageInput").focus();
+      } catch (error) {
+        showNotice("Message was not sent. Check your connection and Firebase rules.", true);
+        console.error(error);
+      } finally {
+        $("sendButton").disabled = !activeRoom;
+      }
+    });
+
+    if (!configReady) {
+      setStatus("Firebase setup needed");
+      showNotice("Open firebase-config.js and paste your Firebase web app settings to connect.", true);
+    } else {
+      try {
+        const app = initializeApp(firebaseConfig);
+        auth = getAuth(app);
+        database = getDatabase(app);
+        setStatus("Connecting…");
+        onAuthStateChanged(auth, async user => {
+          if (user) {
+            currentUser = user;
+            $("createRoomButton").disabled = false;
+            $("joinRoomButton").disabled = false;
+            setStatus("Connected - choose a chat");
+            const rememberedRoom = localStorage.getItem("chatRoomCode");
+            if (rememberedRoom) await enterRoom(rememberedRoom);
+          } else {
+            try { await signInAnonymously(auth); }
+            catch (error) {
+              setStatus("Could not connect");
+              showNotice("Enable Anonymous sign-in in Firebase Authentication, then reload this page.", true);
+              console.error(error);
+            }
+          }
+        });
+      } catch (error) {
+        setStatus("Firebase setup error");
+        showNotice("Check the Firebase settings in firebase-config.js.", true);
+        console.error(error);
+      }
+    }
   </script>
- 
 </body>
 </html>
+
+
+
